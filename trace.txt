@@ -1,0 +1,16 @@
+**************************************************
+Trace for file: EE0604_01.esm	09:41:06, Thursday, May 24, 2018
+
+Transmitted Message: 
+EE 06 04 00 B2 41 19 C5 13 ED 69 7B 02 00 01 01 
+66 66 66 66 66 66 02 00 01 01 23 45 67 89 AB CD 
+EF
+
+Received Message: 
+EE 06 04 07
+
+Expected Message: 
+EE 06 04 00 61 71 00 00 00 00 04
+
+
+

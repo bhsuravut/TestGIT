@@ -1,0 +1,35 @@
+; Automatic function generation by createScriptFiles function 
+
+; Function: EE0604
+
+; Script filename: EE0604_01.esm
+
+; Tester: RKGupta
+
+; This function calculates an IBM 3624 Offset for a PIN and also provides the length of the PIN.
+
+; Date = 09 Jul 2007
+
+; Purpose: Valid Field Content - 4 Digit PIN = 041234FFFFFFFFFF, ESM Stored Single Length PPK Index = 1 & PVK Index = 1, PIN Format 01 - ANSI
+
+write    = 1
+read     = 2
+nop      = 3
+
+.ccw    write,burst
+EEh, 06h, 04h,                               ;Func Code
+00h,                                         ;FM
+B2h, 41h, 19h, C5h, 13h, EDh, 69h, 7Bh,      ;ePPK(PIN)
+02h, 00h, 01h,                               ;PPK-Spec
+01h,                                         ;PFi
+66h, 66h, 66h, 66h, 66h, 66h,                ;ANB
+02h, 00h, 01h,                               ;PVK-Spec
+01h, 23h, 45h, 67h, 89h, ABh, CDh, EFh,      ;Validation Data
+.end
+
+.ccw read, rcmp + burst + eoc
+EEh, 06h, 04h,                               ;Func Code
+00h,                                         ;Return Code
+61h, 71h, 00h, 00h, 00h, 00h,                ;Offset
+04h,                                         ;PIN Length
+.end
